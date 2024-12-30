@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest  # Change this to ubuntu-latest if you want the latest version of Ubuntu
@@ -40,10 +43,7 @@ jobs:
       # - name: Build
       #   run: npm run build
 
-      permissions:
-       contents: write
-
-       name: Deploy 🚀
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist/spa
