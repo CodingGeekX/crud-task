@@ -12,7 +12,7 @@
     "dev": "quasar dev",
     "build": "quasar build",
     "postinstall": "quasar prepare",
-    "deploy": "gh-pages -d dist/spa"
+    "deploy": "push-dir --dir=dist/spa --remote=gh-pages --branch=master"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -33,6 +33,7 @@
     "eslint-plugin-vue": "^9.30.0",
     "globals": "^15.12.0",
     "postcss": "^8.4.14",
+    "push-dir": "^0.4.1",
     "vite-plugin-checker": "^0.8.0"
   },
   "engines": {
