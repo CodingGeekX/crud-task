@@ -40,10 +40,10 @@ jobs:
       # - name: Build
       #   run: npm run build
 
-      # - name: Deploy
-      #   uses: JamesIves/github-pages-deploy-action@v4  # It's a good practice to use a stable version
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     BASE_BRANCH: master
-      #     BRANCH: gh-pages
-      #     FOLDER: spa
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4  # It's a good practice to use a stable version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: dist/spa
