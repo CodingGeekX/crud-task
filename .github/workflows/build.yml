@@ -46,4 +46,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          base_branch: master
+          branch: gh-pages
           folder: dist/spa
