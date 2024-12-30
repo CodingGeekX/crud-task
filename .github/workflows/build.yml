@@ -1,31 +1,39 @@
 name: Build & Deploy
+
 on:
   push:
     branches:
       - master
+
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest  # Change this to ubuntu-latest if you want the latest version of Ubuntu
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # This is fine, v2 is the latest stable version
+          
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3  # Updated to the latest stable version
         with:
-          node-version: '10.x'
+          node-version: '20'  # Updated Node.js version (recommended to use a LTS version like 16.x)
+
       - name: Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3  # Updated to the latest version
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: Install
         run: npm ci
+
       - name: Build
         run: npm run build
+
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@master
+        uses: JamesIves/github-pages-deploy-action@v4  # It's a good practice to use a stable version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: master
