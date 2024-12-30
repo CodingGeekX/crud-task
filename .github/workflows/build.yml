@@ -27,10 +27,18 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install
-        run: npm ci
+        run: |
+          pwd
+          ls
+          npm ci
+          npm run build
+          ls
+          pwd
 
-      - name: Build
-        run: npm run build
+        shell: bash
+
+      # - name: Build
+      #   run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4  # It's a good practice to use a stable version
